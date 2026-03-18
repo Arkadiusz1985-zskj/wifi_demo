@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Dostęp do sieci szkolnej</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef1f5;
+  }
+
+  .container {
+    max-width: 420px;
+    margin: 80px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+
+  .logo {
+    width: 120px;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    margin: 10px 0;
+  }
+
+  p {
+    color: #666;
+    font-size: 14px;
+  }
+
+  input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  button {
+    width: 95%;
+    padding: 12px;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #155ab6;
+  }
+
+  .warning {
+    margin-top: 20px;
+    display: none;
+    background: #ffe5e5;
+    padding: 15px;
+    border-radius: 10px;
+    color: #900;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <img src="logo.png" class="logo">
+
+  <h2>Logowanie do sieci szkolnej</h2>
+  <p>Wprowadź dane, aby uzyskać dostęp do Internetu</p>
+
+  <input type="text" id="login" placeholder="Login">
+  <input type="password" id="haslo" placeholder="Hasło">
+
+  <button onclick="pokaz()">Zaloguj</button>
+
+  <div class="warning" id="wynik"></div>
+
+</div>
+
+<script>
+function pokaz() {
+  let login = document.getElementById("login").value;
+  let haslo = document.getElementById("haslo").value;
+
+  document.getElementById("wynik").style.display = "block";
+  document.getElementById("wynik").innerHTML =
+    "⚠️ TO BYŁA SYMULACJA!\n<br><br>" +
+    "Wprowadzone dane:<br>" +
+    "Login: <b>" + login + "</b><br>" +
+    "Hasło: <b>" + haslo + "</b><br><br>" +
+    "➡ Tak działają ataki phishingowe.<br>" +
+    "Nigdy nie wpisuj danych na podejrzanych stronach!";
+}
+</script>
+
+</body>
+</html>
