@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dostęp do sieci szkolnej</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #eef3f8 0%, #dde7f2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1f2937;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.14);
+      padding: 30px;
+    }
+
+    .top {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      max-width: 90px;
+      max-height: 90px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8f0fe;
+      color: #174ea6;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 8px 0 10px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .status {
+      background: #fff8e1;
+      color: #8a5a00;
+      border: 1px solid #f3d37a;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      margin: 22px 0 18px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cfd8e3;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s ease;
+      background: #fbfcfe;
+    }
+
+    input:focus {
+      border-color: #3b82f6;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.12);
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      background: #2563eb;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .result {
+      display: none;
+      margin-top: 18px;
+      border-radius: 14px;
+      padding: 16px;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #7f1d1d;
+      line-height: 1.55;
+    }
+
+    .result strong {
+      color: #991b1b;
+    }
+
+    .demo-data {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      font-size: 13px;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <img src="logo.png" alt="Logo szkoły" class="logo">
+      <div class="badge">Sieć szkolna</div>
+      <h1>Połącz się z Internetem</h1>
+      <p class="subtitle">
+        Dostęp do sieci wymaga potwierdzenia danych logowania użytkownika.
+      </p>
+    </div>
+
+    <div class="status">
+      Brak pełnego dostępu do Internetu. Zaloguj się, aby aktywować połączenie.
+    </div>
+
+    <div class="field">
+      <label for="login">Login</label>
+      <input type="text" id="login" placeholder="Wpisz login">
+    </div>
+
+    <div class="field">
+      <label for="haslo">Hasło</label>
+      <input type="password" id="haslo" placeholder="Wpisz hasło">
+      <div class="hint">Do pokazu użyj fikcyjnych danych, np. uczen / 1234</div>
+    </div>
+
+    <button onclick="pokazSymulacje()">Zaloguj i aktywuj połączenie</button>
+
+    <div class="result" id="wynik"></div>
+
+    <div class="footer">
+      Edukacyjna strona demonstracyjna do zajęć z cyberbezpieczeństwa
+    </div>
+  </div>
+
+  <script>
+    function pokazSymulacje() {
+      const login = document.getElementById("login").value;
+      const haslo = document.getElementById("haslo").value;
+      const wynik = document.getElementById("wynik");
+
+      wynik.style.display = "block";
+      wynik.innerHTML = `
+        <strong>⚠️ To była symulacja edukacyjna.</strong><br><br>
+        Wpisane dane mogłyby zostać zapisane przez fałszywą stronę logowania.<br><br>
+        <strong>Wpisano:</strong><br>
+        Login: <strong>${login || "(brak)"}</strong><br>
+        Hasło: <strong>${haslo || "(brak)"}</strong><br><br>
+        Na prawdziwej podejrzanej stronie oszust mógłby takie dane przechwycić.
+        <div class="demo-data">
+          Wniosek: zawsze sprawdzaj adres strony, kontekst logowania i to, czy prośba o podanie danych jest uzasadniona.
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
